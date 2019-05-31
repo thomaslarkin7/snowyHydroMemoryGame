@@ -1,0 +1,286 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+/*canvas {position: fixed; top: 0; left: 0; z-index: 1; } 
+content {position: relative; z-index: 2; }
+*/
+
+#loadOverlay{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left:0;
+    right:0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.932);
+    z-index: 2;
+    
+}
+
+#overlayText{
+    position: relative;
+    top: 20%;
+    color: white;
+    
+    display: inline-block;
+    font-family: 'Roboto';
+}
+
+#h1{
+    font-size: 70px;
+}
+
+#h2{
+    font-family: 'Timmana';
+    font-size: 80px;
+}
+
+#h2_text{
+    font-family: 'Roboto';
+    font-size: 25px;
+    text-align: justify;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+
+}
+
+#h3{
+    font-size: 20px;
+    position: relative;
+    top: 80%;
+    bottom: 10%;      
+}
+
+#buttonIntro{
+    position: relative;
+    background-color: white;
+    color: black;
+    border: 5px solid black;
+    font-family: 'Timmana';
+    padding: 16px 16px 0px 16px;
+    font-size: 45px;
+    top: 20vh;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+ 
+#buttonIntro:hover {
+    background-color: #000000;
+    border: 5px solid white;
+    color: white;
+  }
+
+  #author{
+    position: relative;
+    font-family: 'Timmana';
+    font-size: 20px;
+    top:18vh;
+    left: 90vh;
+
+    }
+
+body {
+    height: 100vh;
+    /*vh stands for viewport height, this is the visible height of your webpage. By setting
+    this value to 100, our body will take 100% of the available height space*/
+    /*display: flex;    */
+    background: rgb(155, 93, 35);
+    z-index: 1;
+}
+
+.imgBottom{
+    display: flex;
+    height: 88px;
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding: 2px;
+}
+
+.imgB{
+    height: 100%;
+    width: 10%;
+    visibility: hidden;
+    padding: 10px;
+}
+
+.show-imgB{
+    background: #120;
+    height: 100%;
+    width: 10%;
+    opacity: 0.9;
+    padding: 10px;
+    visibility: visible;
+}
+
+/*
+
+show-image {
+        background: #550;
+        height: 100%;
+        width: 10%;
+        opacity: 0.9;
+        padding: 10px;
+}
+
+*/
+
+
+canvas{
+    height: 100%;
+    border: thin solid #000000;
+    position: relative;
+    z-index: -3 !important;
+}
+
+.memory-game {
+    width: 800px;
+    height: 520px;
+    margin:auto;
+    position: relative;
+    top: 5%;
+    /*display flex pre-sets some properties for us. 
+    (a) each item will take the same amount of space in the screen
+    (b) items will be stretched out across the row and arranged from L to R*/
+    display: flex;
+    /*flex-wrap allows the card items to be laid out across multiple rows*/
+    flex-wrap: wrap;
+    /*Add some 3D depth to our display*/
+    perspective: 1000px;
+}
+
+.memory-card {
+    /*cards wille be 5 columns across and 4 rows down on the webpage*/
+    width: calc(20% - 10px);
+    height: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+/*When a card item is clicked, transform to 0.97 of original size*/
+.memory-card:active {
+    transform: scale(0.97);
+    /*Add smoothness to this transformation*/
+    transition: transform .2s;
+}
+
+/*When the card is clicked, rotate the Y axis 180 degrees.*/
+.memory-card.flip {
+ transform: rotateY(180deg);
+}
+
+.front-face{
+    /*front and back face will occupy 100% of their containers*/
+    width: 100%;
+    height: 100%;
+    /*20px of padding will be added around the cards*/
+    padding: 10px;
+    /*front face and back face must be positioned on top of eachother*/
+    position: absolute;
+    border-radius: 5px;
+    background: #01183f;
+    backface-visibility: hidden;
+
+} 
+.back-face {
+    /*front and back face will occupy 100% of their containers*/
+    width: 100%;
+    height: 100%;
+    /*20px of padding will be added around the cards*/
+    padding: 10px;
+    /*front face and back face must be positioned on top of eachother*/
+    position: absolute;
+    border-radius: 5px;
+    background: #cacbce;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+
+/*-----------------MODAL STUFF BELOW------------------*/
+/*----------------------------------------------------*/
+/*--https://sabe.io/tutorials/how-to-create-modal-popup-box-- */
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(2, 22, 56);
+    font-family: 'Roboto';
+    color: white;
+    padding: 1rem 1.5rem;
+    width: 60%;
+    height: 75%;
+    border-radius: 0.5rem;
+}
+
+#modalIMG{
+    
+    position: absolute;
+    left: 43%;
+    height: 82%;
+    width: 60%;
+
+}
+
+#modalInfo{
+    position: absolute;
+    text-align: justify;
+    top: 13%;
+    left: 20px;
+    color: white;
+    right: 55%;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+#modalBlurb{
+    font-size: 15px;
+    line-height: 20px;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
