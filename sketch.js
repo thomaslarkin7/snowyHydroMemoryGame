@@ -41,10 +41,10 @@ function setup() {
     //let myColor = '#ffd363'
     //background(myColor);
     if (dayTN == 239){
-        speed = -0.25;
+        speed = -0.1;
       }
     if (dayTN == 0){
-        speed = 0.25
+        speed = 0.1
       }
     
     //Uncomment the line below for movement
