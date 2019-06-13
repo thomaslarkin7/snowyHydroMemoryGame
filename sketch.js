@@ -40,11 +40,15 @@ function setup() {
   function draw() {
     //let myColor = '#ffd363'
     //background(myColor);
-    if (dayTN == 239){
+    
+    if (dayTN > 238){
         speed = -0.1;
+        //console.log("change to neg speed");
       }
-    if (dayTN == 0){
+    if (dayTN < 0 || dayTN == 0){
         speed = 0.1
+        //console.log(windowWidth);
+        //console.log("change to pos speed");
       }
     
     //Uncomment the line below for movement
@@ -155,7 +159,7 @@ function setup() {
 
 
   function drawMounts(peak,range,scale,noiseScale) {
-    for (var x=0; x < windowWidth; x++) {
+    for (var x=0; x < windowWidth; x = x + 0.5) {
       var noiseVal = noise((200+x)*noiseScale, 100*noiseScale);
       stroke(60,range,90);
       line(x, (peak)+noiseVal*scale, x, windowHeight);
