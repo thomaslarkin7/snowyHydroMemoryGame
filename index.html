@@ -20,6 +20,8 @@ https://www.youtube.com/watch?v=ZniVgo8U7ek&t=10s -->
     <script type="text/javascript" src="sketch.js"></script>
     
 </head>
+
+
 <body>
 <!-----------------------------P5.JS------------------------------------------------>
 
@@ -32,7 +34,7 @@ https://www.youtube.com/watch?v=ZniVgo8U7ek&t=10s -->
                 <div id ="h2_text">Learn more about this defining moment in Australia's history by playing the card game of memory. 
                         Match "pairs" of cards to reveal interesting stories about the men and women who worked 
                         on this project.</div>
-                <button type="button" id="buttonIntro" onClick="off()">START</button>
+                <button type="button" id="buttonIntro" onClick="off()">PLAY GAME</button>
                 <div id="author">Thomas Larkin 2019</div>
                 <!--
                 <div id="h3">Read more about this defining moment in Australia's history <a href="https://www.nma.gov.au/defining-moments/resources/snowy-mountains-hydro">here</a>.</div>
@@ -46,6 +48,13 @@ https://www.youtube.com/watch?v=ZniVgo8U7ek&t=10s -->
 
 
     <section class = "memory-game">
+
+
+        <div class = "modalInstructions">
+                <div id = "instructionsBlurb">
+                        The instructions of the game will go here!
+                </div>                        
+        </div>
 
         <!--This html contains two copies of the first card, both front and back face-->
         <div class="memory-card" data-framework="DLeckie">
@@ -145,7 +154,16 @@ https://www.youtube.com/watch?v=ZniVgo8U7ek&t=10s -->
                             <img class="front-face" src="img/10.0_ABeranekCard.svg" alt="ABeranek"/>
                             <img class="back-face" src="img/Back_Face_Triangle.svg" alt="JS Badge"/>
         </div>
+
+
     </section>
+    <div id = "navBottom" style="text-align: center;">
+        <div class= "navButtons">
+                <button type="button" id="buttonNav" onClick="resetboard()">RESET BOARD</button>
+                <button type="button" id="buttonNav">INSTRUCTIONS</button>
+                <button type="button" id="buttonQuiz" onClick = "window.location.href = 'quiz.html'">QUIZ</button>
+        </div>
+    </div>
         
         <div class="imgBottom">
                 <img class="imgB" src="img/1.0_DLeckieCard.svg" alt="DLeckie"/>
