@@ -1,7 +1,15 @@
 //Memory Game: T Larkin
 
 //Make a list of all memory card elements and store this inside a constant named 'cards'
-const cards = document.querySelectorAll('.memory-card');
+//const cards = document.querySelectorAll('.memory-card');
+let cards = document.querySelectorAll('.memory-card');
+//console.log(cards.length);
+//console.log(cards);
+//cards.splice(4, 2);
+//console.log(cards.length);
+
+let numCards = 20;
+let matchedCards = 0;
 
 let hasFlippedCard = false;
 //once two cards have been clicked we need to 'lock' the board to prevent further clicking
@@ -15,12 +23,13 @@ var modal = document.querySelector(".modal");
 
 // Get the modal
 var modals = document.getElementsByClassName('modal');
-
 var imgBs = document.getElementsByClassName('imgB');
 
 //var trigger = document.querySelector(".trigger");
 var closeButtons = document.getElementsByClassName('close-button');
 var closeButton = document.querySelector(".close-button");
+console.log(closeButtons);
+console.log(closeButtons[0]);
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
@@ -53,20 +62,24 @@ function checkForMatch(){
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
 
     if (isMatch == true){
+        
         //console.log('We Have a Match');
         //if the cards that are matched are the Australia cards, toggle the 'Australia' modal
         //if (firstCard.dataset.framework == 'australia'){
             cardValue = firstCard.dataset.framework;
             if (cardValue == 'DLeckie'){setTimeout(toggleModalA, 1500);}
-            if (cardValue == 'PMeredith'){setTimeout(toggleModalV, 1500);}
-            if (cardValue == 'HJeromin'){setTimeout(toggleModalAn, 1500);}
-            if (cardValue == 'IBotka'){setTimeout(toggleModalE, 1500);}
-            if (cardValue == 'KSinkevicius'){setTimeout(toggleModalB, 1500);}
-            if (cardValue == 'AGlavica'){setTimeout(toggleModalR, 1500);}
-            if (cardValue == 'JPeska'){setTimeout(toggleModalH, 1500);}
-            if (cardValue == 'RLodge'){setTimeout(toggleModalAp, 1500);}
-            if (cardValue == 'GVanWezel'){setTimeout(toggleModalAu, 1500);}
-            if (cardValue == 'ABeranek'){setTimeout(toggleModalD, 1500);}
+            else if (cardValue == 'PMeredith'){setTimeout(toggleModalV, 1500);}
+            else if (cardValue == 'HJeromin'){setTimeout(toggleModalAn, 1500);}
+            else if (cardValue == 'IBotka'){setTimeout(toggleModalE, 1500);}
+            else if (cardValue == 'KSinkevicius'){setTimeout(toggleModalB, 1500);}
+            else if (cardValue == 'AGlavica'){setTimeout(toggleModalR, 1500);}
+            else if (cardValue == 'JPeska'){setTimeout(toggleModalH, 1500);}
+            else if (cardValue == 'RLodge'){setTimeout(toggleModalAp, 1500);}
+            else if (cardValue == 'GVanWezel'){setTimeout(toggleModalAu, 1500);}
+            else if (cardValue == 'ABeranek'){setTimeout(toggleModalD, 1500);}
+            else{
+                console.log('Congratulations, you are done!')
+            }
 
         //}
         //console.log(modals);
@@ -76,10 +89,7 @@ function checkForMatch(){
     isMatch ? disableCards() : unflipCards();
 }//end function checkForMatch
 
-
-console.log(imgBs);
-
-
+//console.log(imgBs);
     //If the cards matched are the Australia Cards, toggle 'Australia' Modal
 
 
@@ -117,15 +127,10 @@ function toggleImgD(){imgBs[9].style.visibility = "visible";}
 function windowOnClick(event) {
     if (event.target === modal && cardValue == 'DLeckie') {toggleModalA();}
     if (event.target === modal && cardValue == 'PMeredith') {toggleModalV();}
-
     if (event.target === modal && cardValue == 'HJeromin') {toggleModalAn();}
-
     if (event.target === modal && cardValue == 'IBotka') {toggleModalE();}
-
     if (event.target === modal && cardValue == 'KSinkevicius') {toggleModalB();}
-
     if (event.target === modal && cardValue == 'AGlavica') {toggleModalR();}
-
     if (event.target === modal && cardValue == 'JPeska') {toggleModalH();}
     if (event.target === modal && cardValue == 'RLodge') {toggleModalAp();}
     if (event.target === modal && cardValue == 'GVanWezel') {toggleModalAu();}
@@ -136,12 +141,16 @@ function disableCards(){
     //it's a match
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+    matchedCards = matchedCards += 2;
+    if (matchedCards == 20){
+        document.getElementById('buttonQuiz').style.display = 'block';
+    }
+        console.log(matchedCards);
     resetBoard();
 } //end function disableCards
 
 function unflipCards(){
     lockBoard = true;
-
     //not a match
     //the numeral value in this setTimeout sets the amount of time for the 
     //card to remain visible on screen before being flipped over again
@@ -158,18 +167,28 @@ function resetBoard(){
 } //end function resetBoard
 
 (function shuffle(){
-    cards.forEach(card => {
+    var i;
+    //document.getElementById("wohoo").style.display = "none";
+    for (i=0; i<cards.length; i++){
         let randomPos = Math.floor(Math.random()*12);
-        card.style.order = randomPos;
+        cards[i].style.order = randomPos;
+        //cards[i].style.display = 'none';
+    }
+    
+    cards.forEach(card => {
+        //let randomPos = Math.floor(Math.random()*12);
+        //card.style.order = randomPos;
     });
 })();
+//these extra parenthesis at the end make this function an immediately 
+//invoked function expression
 
 function off(){
     document.getElementById("loadOverlay").style.display = "none";
-    console.log("Pressed Right Here");
+    document.getElementById("navBottom").style.display = "flex";
+    
 }
-//these extra parenthesis at the end make this function an immediately 
-//invoked function expression
+
 
 //MODAL LISTENERS
 //TAKEN FROM this webpage https://sabe.io/tutorials/how-to-create-modal-popup-box
