@@ -99,7 +99,7 @@ body {
 
 .imgBottom{
     display: flex;
-    height: 88px;
+    height: 10%;
     position: absolute;
     width: 100%;
     bottom: 0%;
@@ -122,6 +122,68 @@ body {
     visibility: visible;
 }
 
+#navBottom{
+    display: none;
+    height: 15%;
+    position: absolute;
+    
+    width: 100%;
+    bottom: 10%;
+    padding: 2px;
+}
+
+.navButtons{
+    margin:auto;
+    width: 50%;
+    
+}
+
+#buttonNav{
+    position: relative;
+    background-color: white;
+    color: black;
+    border: 5px solid black;
+    font-family: 'Timmana';
+    
+    padding: 8px 8px 0px 8px;
+    font-size: 35px;
+    
+    /* top: 20vh;  */
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+ 
+#buttonNav:hover {
+    background-color: #000000;
+    border: 5px solid white;
+    color: white;
+  }
+
+  #buttonQuiz{
+    position: relative;
+    background-color: white;
+    color: black;
+    border: 5px solid black;
+    font-family: 'Timmana';
+    display: block;
+    padding: 8px 8px 0px 8px;
+    font-size: 35px;
+    
+    /* top: 20vh;  */
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+ 
+#buttonQuiz:hover {
+    background-color: #000000;
+    border: 5px solid white;
+    color: white;
+  }
+
 /*
 
 show-image {
@@ -143,8 +205,13 @@ canvas{
 }
 
 .memory-game {
+
+    width: 70%;
+    height: 70%;
+    /*
     width: 800px;
     height: 520px;
+    */
     margin:auto;
     position: relative;
     top: 5%;
@@ -159,7 +226,7 @@ canvas{
 }
 
 .memory-card {
-    /*cards wille be 5 columns across and 4 rows down on the webpage*/
+    /*cards will be 5 columns across and 4 rows down on the webpage*/
     width: calc(20% - 10px);
     height: calc(25% - 10px);
     margin: 5px;
@@ -229,6 +296,33 @@ canvas{
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(2, 22, 56);
+    font-family: 'Roboto';
+    color: white;
+    padding: 1rem 1.5rem;
+    width: 60%;
+    height: 75%;
+    border-radius: 0.5rem;
+}
+
+.modalInstructions {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+#instructionsBlurb {
     position: absolute;
     top: 50%;
     left: 50%;
