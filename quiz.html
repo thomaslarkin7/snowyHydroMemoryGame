@@ -1,0 +1,337 @@
+<!--
+    Tutorial For building the quiz can be found here
+    https://www.sitepoint.com/simple-javascript-quiz/
+
+-->
+
+<!--
+    And a second one here
+    https://codepen.io/teachtyler/pres/raEprM
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href = "quiz.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Timmana&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div>
+        
+    </div>
+    <div id="quiz">
+        <h1 id="quiz-name"></h1>
+        <button id="submit-button">Submit Answers</button>
+        <button id="next-question-button">Next Question</button>
+        <button id="prev-question-button">Previous</button>
+        <div id="quiz-results">
+          
+          <p id="quiz-results-message"></p>
+          <p id="quiz-results-score"></p>
+          <button id="quiz-retry-button">Retry</button>
+          
+        </div>
+      </div>
+    
+    <div>
+        
+        <button type="button" id="buttonNav" onClick = "window.location.href = 'index.html'">BACK TO MEMORY GAME</button>
+    </div>
+
+    <div class="imgBottom">
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalA()" src="img/1.0_DLeckieCard.svg" alt="DLeckie"/>
+            </div>
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalV()" src="img/2.0_PMeredithCard.svg" alt="PMeredith"/>
+            </div>
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalAn()" src="img/3.0_HJerominCard.svg" alt="HJeromin"/>
+            </div>
+
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalE()" src="img/4.0_IBotka.svg" alt="IBotka"/>
+            </div>
+
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalB()" src="img/5.0_KSinkeviciusCard.svg" alt="KSinkevicius"/>
+            </div>
+
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalR()" src="img/6.0_AGlavicaCard.svg" alt="AGlavica"/>
+            </div>
+            
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalH()" src="img/7.0_JPeskaCard.svg" alt="JPeska"/>
+            </div>
+
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalAp()" src="img/8.0_RLodgeCard.svg" alt="RLodge"/>
+            </div>
+
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalAu()" src="img/9.0_GVanWezelCard.svg" alt="GVanWezel"/>
+            </div>
+
+            <div class="img-hover-zoom">
+            <img class="imgB" onclick = "toggleModalD()" src="img/10.0_ABeranekCard.svg" alt="ABeranek"/>
+            </div>
+    </div>
+
+    
+    <!--First Card Modal-->
+    <div class="modal">
+            <div id = "aurelia" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Douglas Walter Leckie</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Pilot<br>
+                            <strong>Years Employed: </strong>6<br>
+                            <strong>Country of Origin: </strong>Great Britain<br><br>
+                            <div id = "modalBlurb">
+                                    Douglas was a skilled pilot, having flown aircraft in the Second World War and 
+                                    multiple research expeditions to Antarctica before he commenced work on the Snowy 
+                                    Hydro project. Whilst working for the Snowy Hydro, he received the prestigious 
+                                    Oswald Watt Medal. This medal recognizes “the most noticeable 
+                                    contribution to aviation in Australia by an Australian in a calendar year.”<br><br> 
+                                    He resigned from work in 1960 and decided to move to Victoria to help his 
+                                    mother manage the family farm. 
+                            </div>
+                            
+                    </div>
+                    <img id = "modalIMG" src="img/1.0_DLeckieCard.svg" alt="DLeckie"/>
+            </div>
+    </div>
+
+    <!--Second Card Modal-->
+    <div class="modal">
+            <div id = "vue" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Paul Meredith</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Axeman<br>
+                            <strong>Years Employed: </strong>2<br>
+                            <strong>Country of Origin: </strong>Australia<br><br>
+                            <div id = "modalBlurb">
+                                    Paul found himself in quite a bit of trouble after a workplace incident in Cooma.
+                                    As a result of this, he was fined $30 from the Khancoban court and fired from his
+                                    job as an axeman. Hoping to get her son’s job back, Paul’s mother wrote a letter 
+                                    to his boss stating: <br><br>
+                                    “Paul is more than sorry for his mistakes... He is by no means a bad lad, this 
+                                    trouble he got into was done in haste, without reason or thought of what the 
+                                    consequences could be.” <br><br>
+                                    Unfortunately for Paul, he was not reinstated!   
+                            </div>
+                            
+                    </div>
+                    <img id = "modalIMG" src="img/2.0_PMeredithCard.svg" alt="PMeredith"/>
+            </div>
+    </div>
+
+    <!--Third Card Modal-->
+    <div class="modal">
+            <div id = "angular" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Heinz Jeromin</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Works Foreman<br>
+                            <strong>Years Employed: </strong>26<br>
+                            <strong>Country of Origin: </strong>Germany<br><br>
+                            <div id = "modalBlurb">
+                                    Prior to working on the Snowy Hydro project, Heinz served the German army 
+                                    during the Second World War. During this time, he was a prisoner of war for 
+                                    5 years.<br><br> 
+                                    He began his 26 year career with the Snowy Hydro Authority as a carpenter but over 
+                                    his career, he continued to gain promotions. Before his promotion to works 
+                                    foreman, the following comments were made about Mr Jeromin:<br><br> 
+                                    “His officer in charge has reported favourably on his ability to organise work 
+                                    and handle men and considers him to suitable for the position of works foreman.”    
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/3.0_HJerominCard.svg" alt="HJeromin"/>
+            </div>
+    </div>
+
+    <!--Forth Card Modal-->
+    <div class="modal">
+            <div id = "ember" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Ildiko Botka</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Civil Engineer<br>
+                            <strong>Years Employed: </strong>12<br>
+                            <strong>Country of Origin: </strong>Hungary<br><br>
+                            <div id = "modalBlurb">
+                            Ildiko Botka fled Hungary as a refugee and immigrated to 
+                            Australia. Her skillsets as a civil engineer were needed and after receiving a job, 
+                            she was placed in the hydrology branch. Some of her tasks in this section included 
+                            flood studies, snowmelt forecasting procedures and work on computers to model 
+                            flooding.<br><br> 
+                            She applied for 9 months of unpaid leave in order to have a baby but this application 
+                            was rejected and as a result, she was forced to resign. Despite the Snowy Hydro 
+                            Authority wishing to keep her position, they strongly advised her to reapply after 
+                            9 months. After giving birth, she reapplied for her position in the hydrology 
+                            department and was successful.
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/4.0_IBotka.svg" alt="IBotka"/>
+            </div>
+    </div>
+
+    <!--Fifth Card Modal-->
+    <div class="modal">
+            <div id = "backbone" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Kazys Sinkevicius</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Carpenter (initially)<br>
+                            <strong>Years Employed: </strong>10<br>
+                            <strong>Country of Origin: </strong>Lithuania<br><br>
+                            <div id = "modalBlurb">
+                            Kazys was employed and reclassified multiple times over his career with the Snowy 
+                            Hydro Authority. He began his work as a carpenter, but this work was not suited to his 
+                            body. As a result of his bad health, his doctor wrote the following letter to his 
+                            boss:<br><br> 
+                            “This man is suffering from heart disease...While it is desirable for him to continue 
+                            activity within his limits this work should be of the lightest sedentary grade...Thus 
+                            a nine to five desk job is most essential.”<br><br> 
+                            His boss terminated his employment as a result of his permanently bad health.     
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/5.0_KSinkeviciusCard.svg" alt="KSinkevicius"/>
+            </div>
+    </div>
+
+    <!--Sixth Card Modal-->
+    <div class="modal">
+            <div id = "react" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Anton Glavica</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Chainman<br>
+                            <strong>Years Employed: </strong>10<br>
+                            <strong>Country of Origin: </strong>Yugoslavia<br><br>
+                            <div id = "modalBlurb">
+                            Anton Glavica moved to Australia from a country that no longer exists! Yugoslavia is present day 
+                            Serbia, Croatia and Macedonia.<br><br>
+                            A ‘Chainman’ is another name for someone who performs surveying work. Surveyors take 
+                            detailed measurements of areas of land to make sure that infrastructure projects – such
+                             as the construction of dams and hydroelectric power stations – is suitable.<br><br> 
+                            As a Chainman, Anton Glavica had a number of roles to perform. Some of these roles 
+                            included maintaining survey equipment, chopping down trees and bushland to clear 
+                            lines of sight and clearing walking tracks.     
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/6.0_AGlavicaCard.svg" alt="AGlavica"/>
+            </div>
+    </div>
+
+    <!--Seventh Card Modal-->
+    <div class="modal">
+            <div id = "horse" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Josef Peska</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Timekeeper<br>
+                            <strong>Years Employed: </strong>5<br>
+                            <strong>Country of Origin: </strong>Czechoslovakia<br><br>
+                            <div id = "modalBlurb">
+                            Josef studied commerce at university in Prague. He used these skills working as a 
+                            timekeeper. Much of his work involved distributing large sums of money towards 
+                            employees, materials and project work – jobs that would require lots of maths! 
+                            
+                            After further accounting studies, he was made a member of the Australian Society of 
+                            Accountants in 1958. In a letter that the Society wrote, addressed to the Snowy Hydro 
+                            Authority:<br><br> 
+                            "As a result of years of study and work, Mr Peska has gained the privilege of 
+                            membership and through you I desire to congratulate him."    
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/7.0_JPeskaCard.svg" alt="JPeska"/>
+            </div>
+    </div>
+
+    <!--Eigth Card Modal-->
+    <div class="modal">
+            <div id = "apple" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Richard Lodge</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Lorry Driver<br>
+                            <strong>Years Employed: </strong>38<br>
+                            <strong>Country of Origin: </strong>Australia<br><br>
+                            <div id = "modalBlurb">
+                            Richard Lodge spent most of his working life (38 years of it) working for the Snowy 
+                            Hydro Authority. Driving lorrys for the Snowy Hydro Project would have involved 
+                            moving large quantities or earth to and from worksites to make way for new 
+                            infrastructure. For someone like Richard, there were always 
+                            jobs to be found.<br><br>
+                            In addition to working for the Snowy Hydro project in Australia, Richard was selected 
+                            to go on a driver assignment to Thailand to assist in building the Tak to Mae Sot road 
+                            project. This project was one of the first overseas aid projects by the Snowy 
+                            Mountains Authority. 
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/8.0_RLodgeCard.svg" alt="RLodge"/>
+            </div>
+    </div>
+
+    <!--Ninth Card Modal-->
+    <div class="modal">
+            <div id = "australia" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Gerard Willem Van Wezel</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Electrical Engineer<br>
+                            <strong>Years Employed: </strong>14<br>
+                            <strong>Country of Origin: </strong>Netherlands<br><br>
+                            <div id = "modalBlurb">
+                            At the time of the Second World War Gerard was held as a prisoner for three years.
+                            During this time, he was forced to work on the Burma Railway line.<br><br>
+                            His university education was broken up over two countries. The first half of which 
+                            involved engineering study in the Netherlands. He then moved to Perth and completed an electrical 
+                            engineering program there.<br><br> 
+                            In his role as an electrical engineer, Gerard was responsible for the installation 
+                            of electrical equipment, cabling and device protection at hydro-electric power stations. 
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/9.0_GVanWezelCard.svg" alt="GVanWezel"/>
+            </div>
+    </div>
+
+    <!--Tenth Card Modal-->
+    <div class="modal">
+            <div id = "drill" class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h1>Angeleia Beranek</h1>
+                    <div id = "modalInfo">
+                            <strong>Occupation: </strong>Typist<br>
+                            <strong>Years Employed: </strong>5<br>
+                            <strong>Country of Origin: </strong>Great Britain<br><br>
+                            <div id = "modalBlurb">
+                            Typists were responsible for producing letters, 
+                            certificates, articles and other documentation. For a typist, making little to no 
+                            errors was crucial. If too many errors on a document were made, the entire document 
+                            had to be retyped.To be appointed as a typist by the Snowy Hydro Authority, applicants had to pass a 
+                            40 words per minute typing test. <br><br> 
+                            In her application typing test, Angeleia typed at a rate of 47.8 words per minute. 
+                            Later in her career, she was tested typing at a rate of 66.3 words per minute which 
+                            made her eligible for a higher salary. Towards the end of her career, she was tested 
+                            at 57.6 words per minute, a slight drop from her personal best! 
+                            </div>  
+                    </div>
+                    <img id = "modalIMG" src="img/10.0_ABeranekCard.svg" alt="ABeranek"/>
+            </div>
+    </div>
+
+    <script type="text/javascript" src="quiz.js"></script>
+
+</body>
+</html>
